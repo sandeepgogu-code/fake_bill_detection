@@ -1,4 +1,19 @@
 import streamlit as st
+import traceback
+import sys
+
+try:
+    # --- your existing app code / imports here ---
+    # e.g. def main(): ...
+    # main()
+    st.write("App starting...")  # keep something small to test
+except Exception:
+    tb = traceback.format_exc()
+    st.error("App crashed — traceback below")
+    st.code(tb)
+    # also print to terminal
+    print(tb, file=sys.stderr)
+import streamlit as st
 import joblib
 import pandas as pd
 import os
@@ -49,3 +64,4 @@ if st.button("🔍 Check Authenticity"):
             st.error("❌ This is a **Fake** currency note.")
     else:
         st.warning("⚠️ Model is not loaded. Please check your deployment.")
+
